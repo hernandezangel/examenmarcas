@@ -30,7 +30,15 @@ elementFormDefault="qualified">
 		<xsd:element name="client" maxOccurs="2">
 			<xsd:complexType>
 				<xsd:sequence>
-				<xsd:element name="nom" />
+				<xsd:element name="nom">
+					<xsd:complexType>
+					<xsd:simpleContent>
+						<xsd:extension base="xsd:string">
+							<xsd:attribute type="xsd:string" name="tractament" use="required"/>
+						</xsd:extension>
+					</xsd:simpleContent>
+					</xsd:complexType>
+				</xsd:element>
 				<xsd:element name="telefon" type="xsd:int" />
 				<xsd:element name="email" type="xsd:string" />
 				<xsd:element name="tipusClient">
