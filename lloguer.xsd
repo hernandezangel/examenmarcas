@@ -11,7 +11,8 @@ elementFormDefault="qualified">
 				<xsd:sequence>
 				<xsd:element name="marca" type="xsd:string" />
 				<xsd:element name="model" type="xsd:string" />
-				<xsd:element name="equipacio" type="xsd:string" />
+				<xsd:element name="color" type="xsd:string" minOccurs="0" />
+				<xsd:element name="equipacio">
 					<xsd:complexType>
 						<xsd:sequence>
 							<xsd:element name="climatitzador" type="xsd:string" />
@@ -29,16 +30,25 @@ elementFormDefault="qualified">
 		<xsd:element name="client">
 			<xsd:complexType>
 				<xsd:sequence>
-				<xsd:element name="nom" type="xsd:string" />
-				<xsd:element name="telefon" type="xsd:string" />
+				<xsd:element name="nom" />
+				<xsd:element name="telefon" type="xsd:int" />
 				<xsd:element name="email" type="xsd:string" />
-				<xsd:element name="tipusClient" type="xsd:string" />
+				<xsd:element name="tipusClient">
+				  <xsd:simpleType>
+				    <xsd:restriction base="xsd:string">
+				      <xsd:enumeration value="Premium"/>
+				      <xsd:enumeration value="Habitual"/>
+				      <xsd:enumeration value="Ocasional"/>
+				    </xsd:restriction>
+				  </xsd:simpleType>
+				</xsd:element>
+
 				<xsd:element name="lloguer">
 					<xsd:complexType>
 						<xsd:sequence>
 							<xsd:element name="cotxe" type="xsd:string" />
-							<xsd:element name="dataInici" type="xsd:string" />	
-							<xsd:element name="dataFi" type="xsd:string" />
+							<xsd:element name="dataInici" type="xsd:date" />	
+							<xsd:element name="dataFi" type="xsd:date" />
 						</xsd:sequence>
 					</xsd:complexType>
 				</xsd:element>
@@ -46,5 +56,7 @@ elementFormDefault="qualified">
 				<xsd:attribute name="dni" type="xsd:string" />
 			</xsd:complexType>
 		</xsd:element>
+		</xsd:sequence>
 	</xsd:complexType>
+</xsd:element>
 </xsd:schema>
